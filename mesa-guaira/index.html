@@ -1,0 +1,335 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="icon" href="/assets/brote.svg" type="image/svg+xml"><meta name="robots" content="noindex"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body><div style="position:relative;z-index:9999;background:#23281C;color:#F1ECDC;font:600 13px/1.3 system-ui,sans-serif;padding:9px 16px;text-align:center">Proyecto de muestra con marca ficticia · <a href="/" style="color:#F6C39E;text-decoration:underline">Hecho por Pyahu Labs — ver más</a></div>
+<title>Mesa Guairá — Demo · Pyahu Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Karla:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg:#2B1B14; --surface:#3A2419; --surface-2:#472C1E; --ink:#F3E3D3; --ink-soft:#C9A98C;
+    --line:rgba(243,227,211,0.14); --accent:#C9862E; --accent-ink:#2B1B14; --ember:#B5502E;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Karla',Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Bitter',Georgia,serif;text-wrap:balance;margin:0;}
+  p{margin:0;}
+  a{text-decoration:none;color:inherit;}
+  button,input{font-family:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .label{font-family:'Karla',sans-serif;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);}
+  .btn{
+    font-family:'Karla',sans-serif;font-weight:700;font-size:14px;cursor:pointer;
+    padding:14px 26px;border-radius:4px;display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);transition:opacity .15s ease;
+  }
+  .btn:hover{opacity:.85;}
+  .btn-ghost{background:none;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);opacity:1;}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--line);}
+  .logo{font-family:'Bitter',serif;font-weight:700;font-size:21px;display:flex;align-items:center;gap:10px;}
+  .logo svg{width:22px;height:22px;color:var(--accent);}
+  .navlinks{display:flex;gap:30px;align-items:center;}
+  .navlinks a{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--accent);}
+  .burger{display:none;background:none;border:none;color:var(--ink);padding:6px;}
+  .mobile-menu{display:none;flex-direction:column;border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:14px 0;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);border-top:1px solid var(--line);}
+
+  .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;align-items:stretch;}
+  .hero-copy{padding:88px 0;}
+  .hero h1{font-size:48px;line-height:1.1;margin-bottom:22px;}
+  .hero p.sub{font-size:16px;line-height:1.7;color:var(--ink-soft);max-width:40ch;margin-bottom:32px;}
+  .hero-art{background:linear-gradient(165deg,var(--surface),#5A3420 55%,var(--ember));display:flex;align-items:center;justify-content:center;min-height:320px;}
+  .hero-art svg{width:46%;max-width:180px;height:auto;color:rgba(243,227,211,0.85);}
+
+  .menu-section{padding:80px 0;border-top:1px solid var(--line);}
+  .menu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .tab{
+    font-family:'Karla',sans-serif;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+    padding:9px 18px;border:1px solid var(--line);background:none;color:var(--ink-soft);border-radius:99px;cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tab:hover{border-color:var(--accent);color:var(--accent);}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+  .dish-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;}
+  .dish{display:flex;justify-content:space-between;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .dish.hidden{display:none;}
+  .dish-name{font-family:'Bitter',serif;font-weight:600;font-size:17px;margin-bottom:5px;}
+  .dish-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.5;max-width:32ch;}
+  .dish-price{font-family:'Bitter',serif;font-weight:600;font-size:15px;color:var(--accent);white-space:nowrap;}
+
+  .reserva{padding:76px 0;border-top:1px solid var(--line);background:var(--surface);}
+  .reserva-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-bottom:8px;}
+  .field input[type=text]{
+    width:100%;padding:12px 14px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-size:14px;border-radius:4px;
+  }
+  .stepper{display:flex;align-items:center;gap:16px;}
+  .stepper button{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);
+    font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .stepper button:hover{border-color:var(--accent);color:var(--accent);}
+  .stepper span{font-family:'Bitter',serif;font-size:18px;min-width:20px;text-align:center;}
+  .days{display:flex;gap:8px;flex-wrap:wrap;}
+  .daychip{
+    padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink-soft);
+    font-size:13px;cursor:pointer;
+  }
+  .daychip.on,.slotchip.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+  .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .slotchip{
+    padding:10px 0;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink-soft);
+    font-size:13px;text-align:center;cursor:pointer;font-family:'Karla',sans-serif;
+  }
+  .confirm-panel{display:none;border:1px solid var(--accent);border-radius:8px;padding:22px;background:var(--bg);}
+  .confirm-panel.show{display:block;}
+  .confirm-panel h3{font-size:18px;margin-bottom:10px;color:var(--accent);}
+  .confirm-panel p{font-size:14px;color:var(--ink-soft);line-height:1.7;}
+
+  .ubicacion{padding:70px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  .hours-row{display:flex;justify-content:space-between;font-size:15px;border-bottom:1px solid var(--line);padding:9px 0;}
+  .hours-row span:last-child{color:var(--ink-soft);}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:900px){
+    .navlinks{display:none;}
+    .burger{display:flex;align-items:center;justify-content:center;}
+    .hero{grid-template-columns:1fr;}
+    .hero-copy{padding:52px 0;}
+    .hero h1{font-size:36px;}
+    .hero-art{min-height:220px;}
+    .dish-grid{grid-template-columns:1fr;}
+    .reserva-grid{grid-template-columns:1fr;gap:32px;}
+    .ubicacion{grid-template-columns:1fr;gap:32px;}
+    .slots{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:520px){ .wrap{padding:0 20px;} .slots{grid-template-columns:repeat(2,1fr);} }
+</style>
+
+<svg width="0" height="0" style="position:absolute;">
+  <defs>
+    <g id="flame">
+      <path d="M12 2c2 3-1 4-1 7 0 2 1.5 3 3 3 2 0 3.5-1.5 3.5-3.5C17.5 5 14 3 12 2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M9 12c-2 2-3 4-3 6.5A6 6 0 0012 24a6 6 0 006-5.5c0-1.6-.6-2.8-1.4-4-.5 1.6-1.8 2.6-3.1 2.1-1.6-.6-1-2.4-1-3.6-1 .6-2.6 1.6-3.5 3z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </g>
+    <g id="skewer">
+      <line x1="2" y1="22" x2="22" y2="2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="7.5" y="12.5" width="5" height="5" transform="rotate(45 10 15)" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="15.5" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <rect x="3.8" y="16.2" width="4" height="4" transform="rotate(45 5.8 18.2)" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </g>
+    <g id="sprig">
+      <path d="M12 22V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 16c-3-1-5-3-5-6 3 0 5 2 5 5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M12 12c3-1 5-3 5-6-3 0-5 2-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M12 20c-2.5-.5-4-2-4-4.4 2.5 0 4 1.6 4 4" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <nav>
+    <div class="logo"><svg viewBox="0 0 24 24"><use href="#flame"/></svg>Mesa Guairá</div>
+    <div class="navlinks">
+      <a href="#carta">Carta</a>
+      <a href="#reservar">Reservar</a>
+      <a href="#ubicacion">Ubicación</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#carta">Carta</a>
+    <a href="#reservar">Reservar</a>
+    <a href="#ubicacion">Ubicación</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-copy" style="max-width:100%;">
+    <div style="max-width:560px;">
+      <p class="label" style="color:var(--accent);margin-bottom:20px;">Parrilla &amp; cocina de campo</p>
+      <h1>Fuego lento, recetas de siempre.</h1>
+      <p class="sub">Parrilla criolla y platos de olla en el centro de Villarrica. Carta corta, todo hecho al momento.</p>
+      <a href="#reservar" class="btn">Reservar mesa</a>
+    </div>
+  </div>
+  <div class="hero-art"><svg viewBox="0 0 24 24"><use href="#flame"/></svg></div>
+</section>
+
+<div class="wrap">
+  <section id="carta" class="menu-section">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:10px;">
+      <h2 style="font-size:30px;">Platos de la casa</h2>
+      <span class="label">Carta corta, cambia por temporada</span>
+    </div>
+    <div class="menu-tabs" id="menuTabs">
+      <button class="tab active" data-cat="todo">Todo</button>
+      <button class="tab" data-cat="parrilla">Parrilla</button>
+      <button class="tab" data-cat="casa">De la casa</button>
+      <button class="tab" data-cat="postres">Postres</button>
+    </div>
+    <div class="dish-grid" id="dishGrid"></div>
+  </section>
+</div>
+
+<section id="reservar" class="reserva">
+  <div class="wrap">
+    <p class="label" style="color:var(--accent);margin-bottom:10px;">Reservá tu mesa</p>
+    <h2 style="font-size:28px;margin-bottom:30px;">Sin llamadas, sin esperar respuesta.</h2>
+    <div class="reserva-grid">
+      <div id="formPane">
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" id="resName" placeholder="¿A nombre de quién?">
+        </div>
+        <div class="field">
+          <label>Personas</label>
+          <div class="stepper">
+            <button type="button" id="minusBtn">–</button>
+            <span id="peopleCount">2</span>
+            <button type="button" id="plusBtn">+</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Día</label>
+          <div class="days" id="days">
+            <span class="daychip" data-day="Vie 11">Vie 11</span>
+            <span class="daychip on" data-day="Sáb 12">Sáb 12</span>
+            <span class="daychip" data-day="Dom 13">Dom 13</span>
+          </div>
+        </div>
+        <div class="field">
+          <label>Horario</label>
+          <div class="slots" id="slots">
+            <span class="slotchip" data-t="19:00">19:00</span>
+            <span class="slotchip on" data-t="19:30">19:30</span>
+            <span class="slotchip" data-t="20:00">20:00</span>
+            <span class="slotchip" data-t="20:30">20:30</span>
+          </div>
+        </div>
+        <button class="btn" id="reservarBtn" style="margin-top:8px;">Confirmar reserva</button>
+      </div>
+      <div class="confirm-panel" id="confirmPanel">
+        <h3>¡Reserva confirmada!</h3>
+        <p id="confirmText"></p>
+        <button class="btn btn-ghost" style="margin-top:18px;" id="editBtn">Editar reserva</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section id="ubicacion" class="ubicacion">
+    <div>
+      <p class="label" style="color:var(--accent);margin-bottom:16px;">Horarios</p>
+      <div class="hours-row"><span>Martes a viernes</span><span>18:00 – 23:00</span></div>
+      <div class="hours-row"><span>Sábado y domingo</span><span>12:00 – 15:00 · 18:00 – 23:00</span></div>
+      <div class="hours-row" style="border-bottom:none;"><span>Lunes</span><span>Cerrado</span></div>
+    </div>
+    <div>
+      <p class="label" style="color:var(--accent);margin-bottom:16px;">Dónde estamos</p>
+      <p style="font-size:16px;line-height:1.7;">Centro de Villarrica, Guairá</p>
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:10px;">Reservas también por WhatsApp</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="label">Mesa Guairá — Villarrica, Paraguay</span>
+    <span class="label">Proyecto de muestra · Pyahu Labs</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var dishes = [
+    { name: 'Asado de tira', desc: 'A la parrilla, con mandioca y chimichurri de la casa.', price: 'Gs. 65.000', cat: 'parrilla' },
+    { name: 'Bife koygua', desc: 'Bife a caballo con puré y ensalada de estación.', price: 'Gs. 58.000', cat: 'parrilla' },
+    { name: 'Pollo al disco', desc: 'Cocción lenta con verduras de la zona.', price: 'Gs. 52.000', cat: 'parrilla' },
+    { name: 'Sopa paraguaya casera', desc: 'Receta de familia, horneada en molde de barro.', price: 'Gs. 18.000', cat: 'casa' },
+    { name: 'Chipa guasu', desc: 'Como acompañamiento o plato principal, recién horneado.', price: 'Gs. 22.000', cat: 'casa' },
+    { name: 'Mbeju relleno', desc: 'Con queso paraguay derretido en el centro.', price: 'Gs. 19.000', cat: 'casa' },
+    { name: 'Postre mbeju dulce', desc: 'Con dulce de leche casero.', price: 'Gs. 15.000', cat: 'postres' },
+    { name: 'Ensalada de mango', desc: 'Con helado de crema y menta fresca.', price: 'Gs. 17.000', cat: 'postres' }
+  ];
+  var icons = ['skewer', 'sprig'];
+  var grid = document.getElementById('dishGrid');
+  dishes.forEach(function(d, i){
+    var el = document.createElement('div');
+    el.className = 'dish';
+    el.dataset.cat = d.cat;
+    el.innerHTML =
+      '<div style="display:flex;gap:14px;max-width:34ch;">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" style="color:var(--accent);flex-shrink:0;margin-top:2px;"><use href="#' + icons[i % icons.length] + '"/></svg>' +
+        '<div><p class="dish-name">' + d.name + '</p><p class="dish-desc">' + d.desc + '</p></div>' +
+      '</div>' +
+      '<span class="dish-price">' + d.price + '</span>';
+    grid.appendChild(el);
+  });
+
+  var tabs = document.getElementById('menuTabs');
+  tabs.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab');
+    if (!btn) return;
+    tabs.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    btn.classList.add('active');
+    var cat = btn.dataset.cat;
+    grid.querySelectorAll('.dish').forEach(function(d){
+      d.classList.toggle('hidden', !(cat === 'todo' || d.dataset.cat === cat));
+    });
+  });
+
+  // burger
+  var burger = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // reservation
+  var people = 2;
+  var peopleCount = document.getElementById('peopleCount');
+  document.getElementById('minusBtn').addEventListener('click', function(){
+    people = Math.max(1, people - 1); peopleCount.textContent = people;
+  });
+  document.getElementById('plusBtn').addEventListener('click', function(){
+    people = Math.min(12, people + 1); peopleCount.textContent = people;
+  });
+  var days = document.getElementById('days');
+  days.addEventListener('click', function(e){
+    var chip = e.target.closest('.daychip'); if (!chip) return;
+    days.querySelectorAll('.daychip').forEach(function(c){ c.classList.remove('on'); });
+    chip.classList.add('on');
+  });
+  var slots = document.getElementById('slots');
+  slots.addEventListener('click', function(e){
+    var chip = e.target.closest('.slotchip'); if (!chip) return;
+    slots.querySelectorAll('.slotchip').forEach(function(c){ c.classList.remove('on'); });
+    chip.classList.add('on');
+  });
+
+  var formPane = document.getElementById('formPane');
+  var confirmPanel = document.getElementById('confirmPanel');
+  document.getElementById('reservarBtn').addEventListener('click', function(){
+    var name = document.getElementById('resName').value.trim() || 'tu reserva';
+    var day = days.querySelector('.daychip.on');
+    var slot = slots.querySelector('.slotchip.on');
+    document.getElementById('confirmText').textContent =
+      'Mesa para ' + people + (people === 1 ? ' persona' : ' personas') + ', ' + (name === 'tu reserva' ? '' : ('a nombre de ' + name + ', ')) +
+      (day ? day.dataset.day : '') + ' a las ' + (slot ? slot.dataset.t : '') + '. Te esperamos en Mesa Guairá.';
+    formPane.style.display = 'none';
+    confirmPanel.classList.add('show');
+  });
+  document.getElementById('editBtn').addEventListener('click', function(){
+    confirmPanel.classList.remove('show');
+    formPane.style.display = 'block';
+  });
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,303 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="icon" href="/assets/brote.svg" type="image/svg+xml"><meta name="robots" content="noindex"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body><div style="position:relative;z-index:9999;background:#23281C;color:#F1ECDC;font:600 13px/1.3 system-ui,sans-serif;padding:9px 16px;text-align:center">Proyecto de muestra con marca ficticia · <a href="/" style="color:#F6C39E;text-decoration:underline">Hecho por Pyahu Labs — ver más</a></div>
+<title>Verá Studio — Demo · Pyahu Labs</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#EFEAF2; --surface:#FFFFFF; --surface-2:#F7F3F9; --ink:#2B2432; --ink-soft:#756B82;
+    --line:rgba(43,36,50,0.13); --accent:#7A5D96; --accent-ink:#FFFFFF;
+    --mint:#3F7359; --mint-soft:rgba(63,115,89,0.13); --amber:#966319; --amber-soft:rgba(150,99,25,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Sora',sans-serif;font-weight:700;text-wrap:balance;margin:0;}
+  p{margin:0;}
+  a{text-decoration:none;color:inherit;}
+  button,input{font-family:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .mono{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+  .label{font-family:'IBM Plex Sans',sans-serif;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-soft);}
+  .btn{
+    font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;border-radius:8px;
+    padding:13px 24px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);transition:opacity .15s ease;
+  }
+  .btn:hover{opacity:.88;}
+  .btn:disabled{opacity:.4;cursor:not-allowed;}
+  .btn-ghost{background:none;color:var(--ink);border:1px solid var(--line);}
+
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line);background:var(--surface);}
+  .navwrap{background:var(--surface);border-bottom:1px solid var(--line);}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:18px;}
+  .logo span{color:var(--accent);}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);}
+  .navlinks a:hover{color:var(--accent);}
+  .burger{display:none;background:none;border:none;color:var(--ink);padding:6px;}
+  .mobile-menu{display:none;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:14px 32px;font-size:13px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);border-top:1px solid var(--line);}
+
+  .hero{padding:56px 0 36px;}
+  .hero h1{font-size:36px;line-height:1.2;max-width:20ch;margin-bottom:14px;}
+  .hero p{font-size:15px;color:var(--ink-soft);max-width:52ch;}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;}
+  .booking-card{padding:32px;margin-bottom:20px;}
+  .step-label{margin-bottom:12px;}
+  .chip-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;}
+  .chip{
+    font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:500;padding:10px 16px;cursor:pointer;
+    border-radius:8px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);transition:all .12s ease;
+  }
+  .chip:hover{border-color:var(--accent);}
+  .chip.on{border-color:var(--accent);background:var(--accent);color:#fff;}
+  .slots-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:8px;}
+  .slot{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;text-align:center;padding:10px 0;cursor:pointer;
+    border-radius:6px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);
+  }
+  .slot:hover{border-color:var(--accent);}
+  .slot.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .slot.taken{color:var(--ink-soft);background:var(--bg);text-decoration:line-through;cursor:not-allowed;pointer-events:none;}
+  .name-field{margin:22px 0;}
+  .name-field label{display:block;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-bottom:8px;}
+  .name-field input{
+    width:100%;max-width:340px;padding:12px 14px;border-radius:8px;border:1px solid var(--line);
+    background:var(--surface-2);color:var(--ink);font-size:14px;
+  }
+  .success{
+    display:none;align-items:center;gap:10px;background:var(--mint-soft);color:var(--mint);border-radius:8px;
+    padding:12px 16px;font-size:13.5px;font-weight:500;margin-top:16px;
+  }
+  .success.show{display:flex;}
+
+  .panel-head{display:flex;justify-content:space-between;align-items:center;padding:20px 26px;border-bottom:1px solid var(--line);}
+  .panel-head h3{font-size:16px;}
+  .agenda-row{display:flex;align-items:center;gap:18px;padding:15px 26px;border-bottom:1px solid var(--line);}
+  .agenda-row:last-child{border-bottom:none;}
+  .agenda-empty{padding:28px 26px;color:var(--ink-soft);font-size:14px;}
+  .status{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;padding:3px 10px;border-radius:99px;white-space:nowrap;}
+  .status.confirmed{background:var(--mint-soft);color:var(--mint);}
+  .status.pending{background:var(--amber-soft);color:var(--amber);}
+
+  .section-label{margin:44px 0 14px;}
+
+  footer{padding:32px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .burger{display:flex;align-items:center;justify-content:center;}
+    .hero h1{font-size:28px;}
+    .booking-card{padding:22px;}
+    .slots-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .agenda-row{flex-wrap:wrap;}
+  }
+</style>
+
+<div class="navwrap">
+  <div class="wrap">
+    <nav>
+      <div class="logo">Verá <span>Studio</span></div>
+      <div class="navlinks">
+        <a href="#reservar">Reservar turno</a>
+        <a href="#panel">Panel del negocio</a>
+      </div>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#reservar">Reservar turno</a>
+    <a href="#panel">Panel del negocio</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <p class="label" style="color:var(--accent);margin-bottom:14px;">Sistema de turnos online</p>
+    <h1>Reservá tu turno en menos de un minuto.</h1>
+    <p>Elegí servicio, día y horario disponible — sin llamar, sin esperar respuesta por WhatsApp. Probá el flujo completo, funciona de verdad en esta página.</p>
+  </section>
+
+  <section id="reservar">
+    <div class="card booking-card">
+      <p class="label step-label">1. Elegí el servicio</p>
+      <div class="chip-row" id="services"></div>
+
+      <p class="label step-label">2. Elegí el día</p>
+      <div class="chip-row" id="days"></div>
+
+      <p class="label step-label" id="slotsLabel">3. Elegí el horario</p>
+      <div class="slots-grid" id="slots"></div>
+
+      <div class="name-field">
+        <label>Tu nombre</label>
+        <input type="text" id="clientName" placeholder="¿A nombre de quién?">
+      </div>
+
+      <button class="btn" id="confirmBtn">Confirmar turno</button>
+      <div class="success" id="successMsg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="successText"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel">
+    <p class="label section-label">Vista del negocio</p>
+    <div class="card">
+      <div class="panel-head">
+        <h3>Agenda del día</h3>
+        <span class="mono label" id="agendaDay" style="margin:0;"></span>
+      </div>
+      <div id="agendaList"></div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="label">Verá Studio — Villarrica, Guairá</span>
+    <span class="label">Proyecto de muestra · Pyahu Labs</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var services = [
+    { name: 'Corte', duration: '30 min' },
+    { name: 'Color', duration: '1h 30' },
+    { name: 'Manicura', duration: '45 min' },
+    { name: 'Peinado', duration: '40 min' }
+  ];
+  var days = ['Mar 08', 'Mié 09', 'Jue 10', 'Vie 11', 'Sáb 12'];
+  var slotsBase = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30'];
+  var appointmentsByDay = {
+    'Mar 08': [ { time: '10:00', client: 'Lu Benítez', service: 'Corte', status: 'confirmed' } ],
+    'Mié 09': [],
+    'Jue 10': [
+      { time: '09:00', client: 'Rosana G.', service: 'Color + corte', status: 'confirmed' },
+      { time: '11:30', client: 'Marisa O.', service: 'Manicura', status: 'pending' }
+    ],
+    'Vie 11': [ { time: '15:00', client: 'Cami Duarte', service: 'Peinado', status: 'confirmed' } ],
+    'Sáb 12': []
+  };
+
+  var state = { service: services[0].name, day: 'Jue 10', slot: null };
+
+  var servicesEl = document.getElementById('services');
+  services.forEach(function(s){
+    var chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip' + (s.name === state.service ? ' on' : '');
+    chip.textContent = s.name + ' · ' + s.duration;
+    chip.dataset.name = s.name;
+    chip.addEventListener('click', function(){
+      state.service = s.name;
+      servicesEl.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+      chip.classList.add('on');
+    });
+    servicesEl.appendChild(chip);
+  });
+
+  var daysEl = document.getElementById('days');
+  days.forEach(function(d){
+    var chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip' + (d === state.day ? ' on' : '');
+    chip.textContent = d;
+    chip.addEventListener('click', function(){
+      state.day = d;
+      state.slot = null;
+      daysEl.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+      chip.classList.add('on');
+      renderSlots();
+      renderAgenda();
+    });
+    daysEl.appendChild(chip);
+  });
+
+  var slotsEl = document.getElementById('slots');
+  var slotsLabel = document.getElementById('slotsLabel');
+  function renderSlots(){
+    slotsLabel.textContent = '3. Elegí el horario — ' + state.day;
+    slotsEl.innerHTML = '';
+    var taken = (appointmentsByDay[state.day] || []).map(function(a){ return a.time; });
+    slotsBase.forEach(function(t){
+      var el = document.createElement('button');
+      el.type = 'button';
+      var isTaken = taken.indexOf(t) !== -1;
+      el.className = 'slot' + (isTaken ? ' taken' : '') + (t === state.slot ? ' on' : '');
+      el.textContent = t;
+      if (!isTaken){
+        el.addEventListener('click', function(){
+          state.slot = t;
+          slotsEl.querySelectorAll('.slot').forEach(function(c){ c.classList.remove('on'); });
+          el.classList.add('on');
+        });
+      }
+      slotsEl.appendChild(el);
+    });
+  }
+
+  var agendaList = document.getElementById('agendaList');
+  var agendaDay = document.getElementById('agendaDay');
+  function renderAgenda(){
+    agendaDay.textContent = state.day;
+    var appts = (appointmentsByDay[state.day] || []).slice().sort(function(a,b){ return a.time.localeCompare(b.time); });
+    if (appts.length === 0){
+      agendaList.innerHTML = '<div class="agenda-empty">Sin turnos todavía para este día.</div>';
+      return;
+    }
+    agendaList.innerHTML = appts.map(function(a){
+      return '<div class="agenda-row">' +
+        '<span class="mono" style="width:56px;color:var(--ink-soft);">' + a.time + '</span>' +
+        '<span style="flex:1;font-weight:500;">' + a.client + '</span>' +
+        '<span style="flex:1.2;color:var(--ink-soft);font-size:13.5px;">' + a.service + '</span>' +
+        '<span class="status ' + a.status + '">' + (a.status === 'confirmed' ? 'Confirmado' : 'Pendiente') + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  document.getElementById('confirmBtn').addEventListener('click', function(){
+    var nameInput = document.getElementById('clientName');
+    var name = nameInput.value.trim();
+    var successMsg = document.getElementById('successMsg');
+    var successText = document.getElementById('successText');
+    if (!name){
+      nameInput.style.borderColor = '#B5502E';
+      nameInput.focus();
+      return;
+    }
+    nameInput.style.borderColor = '';
+    if (!state.slot){
+      successText.textContent = 'Elegí un horario disponible antes de confirmar.';
+      successMsg.style.background = 'var(--amber-soft)';
+      successMsg.style.color = 'var(--amber)';
+      successMsg.classList.add('show');
+      return;
+    }
+    appointmentsByDay[state.day] = appointmentsByDay[state.day] || [];
+    appointmentsByDay[state.day].push({ time: state.slot, client: name, service: state.service, status: 'confirmed' });
+    successMsg.style.background = 'var(--mint-soft)';
+    successMsg.style.color = 'var(--mint)';
+    successText.textContent = 'Turno confirmado para ' + name + ' — ' + state.service + ', ' + state.day + ' ' + state.slot + '. Ya aparece en la agenda de abajo.';
+    successMsg.classList.add('show');
+    state.slot = null;
+    nameInput.value = '';
+    renderSlots();
+    renderAgenda();
+  });
+
+  var burger = document.getElementById('burgerBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  renderSlots();
+  renderAgenda();
+})();
+</script>
+
+</body></html>
