@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel · Kuarahy Tech — Demo Pyahu Labs</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="brote.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.phead{background:var(--dark);color:var(--bg);padding:28px 0 0}
+.phead small{font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green-l);font-size:13px}
+.phead h1{font-size:clamp(32px,5vw,48px);margin:6px 0 20px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs button{border:0;background:transparent;color:var(--bg);padding:12px 18px;border-radius:14px 14px 0 0;font-weight:700;white-space:nowrap}
+.tabs button.on{background:var(--bg);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:24px 0}
+.kpi{background:var(--surface);border-radius:var(--r);padding:18px 20px}
+.kpi span{color:var(--muted)}
+.kpi b{display:block;font-family:Caprasimo,serif;font-weight:400;font-size:28px;margin-top:4px}
+.ord{background:var(--card);border-radius:var(--r);padding:16px 18px;display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;margin-bottom:10px}
+.ord .who{font-weight:700;font-size:17px}
+.ord .det{color:var(--muted);font-size:14px}
+.ord select{border:0;border-radius:999px;padding:8px 12px;font-weight:700}
+.st-Nuevo{background:var(--surface)}.st-Pagado{background:var(--green-l);color:var(--green-d)}.st-Para-enviar{background:var(--peach);color:var(--peach-d)}.st-Entregado{background:var(--dark);color:var(--bg)}
+table{width:100%;border-collapse:separate;border-spacing:0 8px}
+td,th{padding:10px 12px;text-align:left;vertical-align:middle}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+tbody tr{background:var(--card)}
+tbody td:first-child{border-radius:14px 0 0 14px}tbody td:last-child{border-radius:0 14px 14px 0}
+td img{width:48px;height:48px;border-radius:10px;object-fit:cover}
+td input{width:120px;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 10px}
+td input.s{width:72px}
+.alert{background:var(--peach);color:var(--peach-d);border-radius:14px;padding:12px 16px;font-weight:600;margin-bottom:10px}
+.tablewrap{overflow-x:auto}
+@media(max-width:640px){.hide-m{display:none}}
+</style>
+</head>
+<body>
+<div class="demo-bar">Demo · En un sistema real este panel lleva usuario y contraseña · <a href="index.html">Volver a la tienda</a> · <a href="/">Hecho por Pyahu Labs</a></div>
+<header class="phead"><div class="wrap">
+  <small>Panel · Kuarahy Tech</small>
+  <h1 id="title">Pedidos de hoy</h1>
+  <nav class="tabs"><button class="on" data-tab="pedidos">Pedidos</button><button data-tab="productos">Productos y stock</button><button data-tab="nuevo">+ Cargar producto</button></nav>
+</div></header>
+
+<main class="wrap" style="padding-bottom:64px">
+  <section data-sec="pedidos">
+    <div class="kpis" id="kpis"></div>
+    <div id="alerts"></div>
+    <div id="orders"></div>
+  </section>
+
+  <section data-sec="productos" hidden>
+    <p style="color:var(--muted);margin:20px 0 4px">Cambiá precio o stock y se actualiza al instante en la tienda.</p>
+    <div class="tablewrap"><table><thead><tr><th></th><th>Producto</th><th>Precio (Gs.)</th><th>Stock</th><th class="hide-m">Vendidos</th><th></th></tr></thead><tbody id="prods"></tbody></table></div>
+  </section>
+
+  <section data-sec="nuevo" hidden style="max-width:560px;padding-top:24px">
+    <form id="np">
+      <div class="field"><label for="nn">Nombre</label><input id="nn" required placeholder="Ej.: Parlante portátil Onda"></div>
+      <div class="opts" style="margin-bottom:14px">
+        <div class="field" style="margin:0"><label for="nb">Marca</label><input id="nb" required placeholder="Onda"></div>
+        <div class="field" style="margin:0"><label for="nc">Categoría</label><select id="nc"><option>Celulares</option><option>Auriculares</option><option>Notebooks</option><option>Relojes</option><option>Parlantes</option><option>Accesorios</option></select></div>
+        <div class="field" style="margin:0"><label for="npr">Precio (Gs.)</label><input id="npr" type="number" required min="1000" step="1000"></div>
+        <div class="field" style="margin:0"><label for="ns">Stock</label><input id="ns" type="number" required min="0" value="5"></div>
+      </div>
+      <div class="field"><label for="nd">Descripción</label><textarea id="nd" rows="3" placeholder="Lo que el cliente tiene que saber"></textarea></div>
+      <div class="field"><label>Foto</label><div class="opts" id="pics"></div></div>
+      <button class="btn" style="width:100%">Publicar en la tienda</button>
+    </form>
+  </section>
+
+  <p style="margin-top:40px"><button class="btn ghost" id="reset">Reiniciar la demo</button></p>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const STATES = ['Nuevo', 'Pagado', 'Para enviar', 'Entregado'];
+let products, orders;
+const load = () => { products = KT.products(); orders = KT.orders(); };
+const byId = id => products.find(p => p.id === id);
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 2000); }
+
+function renderOrders() {
+  const today = new Date().toISOString().slice(0, 10);
+  const td = orders.filter(o => o.date === today);
+  const sales = td.reduce((t, o) => t + o.total, 0);
+  const pend = orders.filter(o => o.status === 'Para enviar' || o.status === 'Nuevo').length;
+  $('#kpis').innerHTML = `<div class="kpi"><span>Ventas de hoy</span><b>${KT.gs(sales)}</b></div><div class="kpi"><span>Pedidos de hoy</span><b>${td.length}</b></div><div class="kpi"><span>Por preparar</span><b>${pend}</b></div><div class="kpi"><span>Productos</span><b>${products.length}</b></div>`;
+  const low = products.filter(p => p.stock <= 2);
+  $('#alerts').innerHTML = low.map(p => `<div class="alert">${p.stock <= 0 ? 'Sin stock' : 'Stock bajo: quedan ' + p.stock} · ${p.name}</div>`).join('');
+  $('#orders').innerHTML = orders.map((o, i) => `<div class="ord"><div><div class="who">#${o.n} · ${o.name}</div>
+    <div class="det">${o.items.map(l => (l.q > 1 ? l.q + ' × ' : '') + (byId(l.id) ? byId(l.id).name : 'Producto')).join(' + ')} · ${KT.gs(o.total)}</div>
+    <div class="det">${o.ship}${o.addr ? ' · ' + o.addr : ''} · ${o.pay} · ${o.phone}</div></div>
+    <select data-o="${i}" class="st-${o.status.replace(' ', '-')}" aria-label="Estado">${STATES.map(s => `<option ${s === o.status ? 'selected' : ''}>${s}</option>`).join('')}</select></div>`).join('');
+}
+function renderProds() {
+  $('#prods').innerHTML = products.map(p => `<tr><td><img src="${p.img}" alt=""></td><td><b>${p.name}</b><br><span style="color:var(--muted);font-size:14px">${p.brand} · ${p.cat}</span></td>
+  <td><input type="number" data-price="${p.id}" value="${p.price}" step="10000" aria-label="Precio"></td>
+  <td><input class="s" type="number" data-stock="${p.id}" value="${p.stock}" min="0" aria-label="Stock"></td>
+  <td class="hide-m">${p.sold}</td><td><button class="x" data-del="${p.id}" aria-label="Eliminar" title="Eliminar">×</button></td></tr>`).join('');
+}
+function renderPics() {
+  const imgs = [...new Set(KT.products().concat(products).map(p => p.img))];
+  $('#pics').innerHTML = imgs.map((s, i) => `<label class="opt" style="padding:6px"><input type="radio" name="pic" value="${s}" ${i ? '' : 'checked'}><img src="${s}" alt="" style="width:56px;height:56px;border-radius:10px;object-fit:cover"></label>`).join('');
+}
+function all() { load(); renderOrders(); renderProds(); renderPics(); }
+
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-tab]');
+  if (t) {
+    document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('on', b === t));
+    document.querySelectorAll('[data-sec]').forEach(s => s.hidden = s.dataset.sec !== t.dataset.tab);
+    $('#title').textContent = { pedidos: 'Pedidos de hoy', productos: 'Productos y stock', nuevo: 'Cargar producto' }[t.dataset.tab];
+  }
+  const d = e.target.closest('[data-del]');
+  if (d) { products = products.filter(p => p.id !== +d.dataset.del); KT.saveProducts(products); all(); toast('Producto eliminado de la tienda'); }
+});
+document.addEventListener('change', e => {
+  const o = e.target.closest('[data-o]');
+  if (o) { orders[+o.dataset.o].status = o.value; KT.saveOrders(orders); renderOrders(); toast('Estado actualizado'); }
+  const pr = e.target.closest('[data-price]');
+  if (pr) { byId(+pr.dataset.price).price = Math.max(0, +pr.value); KT.saveProducts(products); toast('Precio actualizado en la tienda'); }
+  const st = e.target.closest('[data-stock]');
+  if (st) { byId(+st.dataset.stock).stock = Math.max(0, +st.value); KT.saveProducts(products); renderOrders(); toast('Stock actualizado'); }
+});
+$('#np').addEventListener('submit', e => {
+  e.preventDefault();
+  const id = Math.max(0, ...products.map(p => p.id)) + 1;
+  products.push({ id, name: $('#nn').value.trim(), brand: $('#nb').value.trim(), cat: $('#nc').value, price: +$('#npr').value, old: 0, stock: +$('#ns').value, img: document.querySelector('input[name=pic]:checked').value, desc: $('#nd').value.trim() || 'Producto nuevo en Kuarahy Tech.', sold: 0 });
+  KT.saveProducts(products); e.target.reset(); all(); toast('Publicado. Ya aparece en la tienda.');
+});
+$('#reset').onclick = () => { KT.reset(); all(); toast('Demo reiniciada'); };
+window.addEventListener('storage', all);
+all();
+</script>
+</body>
+</html>
