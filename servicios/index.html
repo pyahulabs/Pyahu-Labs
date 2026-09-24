@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios y precios — Pyahu Labs</title>
+<meta name="description" content="Qué incluye cada servicio de Pyahu Labs, cuánto sale, cuánto tarda y cómo trabajamos. Landing pages, sitios, catálogos, tiendas online, turnos, sistemas de gestión y Google.">
+<meta property="og:title" content="Servicios y precios — Pyahu Labs">
+<meta property="og:description" content="Todo lo que necesitás saber antes de empezar: qué incluye, precio, plazo y cómo trabajamos.">
+<meta property="og:image" content="../assets/og.jpg">
+<meta name="theme-color" content="#f5ead8">
+<link rel="icon" href="../assets/brote.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../assets/styles.css">
+<style>
+:root{--font-heading:'Gloock',Georgia,serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;background:var(--color-bg);color:var(--color-text);font:17px/1.55 var(--font-body);overflow-x:clip}
+h1,h2,h3{font-family:var(--font-heading);font-weight:400;margin:0;line-height:1.04;letter-spacing:-.015em}
+a{color:var(--color-accent-700)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+.k{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-700)}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:14px 22px;font-weight:700;text-decoration:none;background:var(--color-accent);color:var(--color-neutral-100);transition:background .2s,transform .2s;border:0;cursor:pointer;font:inherit;font-weight:700}
+.btn:hover{background:var(--color-accent-700);color:var(--color-neutral-100);transform:translateY(-2px)}
+.btn.ghost{background:var(--color-surface);color:var(--color-text)}
+.btn.ghost:hover{background:var(--color-accent-200)}
+.btn.dark{background:var(--color-accent-2-900);color:var(--color-bg)}
+
+/* header + service chips, fixed */
+.top{position:sticky;top:0;z-index:30;background:var(--color-bg);border-bottom:1px solid var(--color-surface);transition:box-shadow .25s}
+.top.scrolled{box-shadow:0 6px 20px color-mix(in srgb,#2e2b25 12%,transparent)}
+.top .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-text);font-family:var(--font-heading);font-size:22px}
+.brand img{width:36px;height:36px;border-radius:50%}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:12px}
+.chips::-webkit-scrollbar{display:none}
+.chips a{flex:none;text-decoration:none;color:var(--color-text);font-weight:600;font-size:14px;padding:8px 14px;border-radius:999px;border:2px solid var(--color-accent-2-300);transition:background .2s,color .2s,border-color .2s}
+.chips a.on{background:var(--color-text);border-color:var(--color-text);color:var(--color-bg)}
+@media(max-width:600px){.top .btn{padding:10px 14px;font-size:14px}.brand{font-size:19px}}
+
+.hero{padding:clamp(48px,8vw,96px) 0 clamp(32px,5vw,56px);display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
+@media(max-width:860px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(42px,6.5vw,78px);margin:14px 0 18px;text-wrap:balance}
+.hero p{font-size:clamp(18px,1.7vw,20px);margin:0;max-width:600px;text-wrap:pretty}
+.promise{background:var(--color-accent-2-900);color:var(--color-bg);border-radius:var(--radius-lg);padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.promise div{display:flex;gap:12px;align-items:flex-start}
+.promise i{width:26px;height:26px;border-radius:50%;background:var(--color-accent);flex:none;display:grid;place-items:center;font-style:normal;font-size:14px;color:var(--color-accent-900);font-weight:700;margin-top:1px}
+
+/* quick table */
+.quick{background:var(--color-surface);border-radius:var(--radius-lg);padding:clamp(20px,3vw,32px);margin-bottom:clamp(56px,8vw,96px)}
+.quick h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:18px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 8px}
+.tbl th{text-align:left;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--color-neutral-700);padding:0 14px}
+.tbl td{background:var(--color-bg);padding:14px;vertical-align:middle}
+.tbl td:first-child{border-radius:14px 0 0 14px;font-weight:700}
+.tbl td:last-child{border-radius:0 14px 14px 0;text-align:right}
+.tbl td a{font-weight:700;text-decoration:none;white-space:nowrap}
+.price{font-family:var(--font-heading);font-size:20px;white-space:nowrap}
+@media(max-width:760px){.tbl thead{display:none}.tbl tr{display:grid;grid-template-columns:1fr auto;background:var(--color-bg);border-radius:14px;margin-bottom:8px;padding:12px 14px;gap:4px 10px}.tbl td{background:none;padding:0;border-radius:0!important}.tbl td:nth-child(2){text-align:right}.tbl td:nth-child(3){color:var(--color-neutral-700);font-size:15px}.tbl td:last-child{text-align:right}}
+
+/* service blocks */
+.svc{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,4vw,56px);padding:clamp(48px,7vw,80px) 0;border-top:1px solid var(--color-surface)}
+@media(max-width:900px){.svc{grid-template-columns:1fr}}
+.svc .num{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-heading);font-size:22px;background:var(--color-accent);color:var(--color-accent-900);margin-bottom:18px}
+.svc:nth-of-type(even) .num{background:var(--color-accent-2);color:var(--color-neutral-100)}
+.svc h2{font-size:clamp(34px,4.4vw,52px);margin-bottom:12px}
+.svc .for{font-size:18px;margin:0 0 22px;text-wrap:pretty}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.fact{background:var(--color-surface);border-radius:var(--radius-md);padding:14px 16px}
+.fact span{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--color-neutral-700);font-weight:700}
+.fact b{display:block;font-family:var(--font-heading);font-weight:400;font-size:21px;line-height:1.15;margin-top:4px}
+@media(max-width:520px){.facts{grid-template-columns:1fr 1fr}.facts .fact:first-child{grid-column:1/-1}}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.cols{grid-template-columns:1fr}}
+.box{background:var(--color-neutral-100);border-radius:var(--radius-md);padding:22px 24px}
+.box h3{font-family:var(--font-body);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.box ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+.box li{display:flex;gap:10px;font-size:16px;line-height:1.45}
+.yes li:before{content:"✓";color:var(--color-accent-2-700);font-weight:700;flex:none}
+.no li:before{content:"—";color:var(--color-neutral-500);flex:none}
+.no{background:transparent;border:2px dashed var(--color-surface)}
+.note{grid-column:1/-1;background:var(--color-accent-100);border-radius:var(--radius-md);padding:16px 20px;font-size:16px}
+.note b{color:var(--color-accent-800)}
+.demo{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:var(--color-accent-2-900);color:var(--color-bg);border-radius:var(--radius-md);padding:18px 22px}
+.demo a{color:var(--color-accent-300);font-weight:700}
+
+/* process */
+.band{background:var(--color-surface);padding:clamp(56px,8vw,96px) 0}
+.band h2{font-size:clamp(36px,5vw,58px);margin:10px 0 28px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;counter-reset:s}
+.step{background:var(--color-bg);border-radius:var(--radius-md);padding:22px}
+.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--color-accent);color:var(--color-accent-900);font-family:var(--font-heading);font-size:20px;margin-bottom:12px}
+.step:nth-child(even):before{background:var(--color-accent-2);color:var(--color-neutral-100)}
+.step b{display:block;font-size:18px;margin-bottom:4px}
+.step p{margin:0;font-size:15px;color:var(--color-neutral-800)}
+.pay{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.pay div{background:var(--color-accent-2-900);color:var(--color-bg);border-radius:var(--radius-md);padding:22px}
+.pay b{font-family:var(--font-heading);font-weight:400;font-size:34px;display:block;line-height:1}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.plan{background:var(--color-neutral-100);border-radius:var(--radius-lg);padding:26px;display:flex;flex-direction:column;gap:10px;border:2px solid transparent}
+.plan.hl{border-color:var(--color-accent)}
+.plan .p{font-family:var(--font-heading);font-size:36px;line-height:1}
+.plan .p small{font-family:var(--font-body);font-size:15px;color:var(--color-neutral-700)}
+.plan .who{font-size:14px;font-weight:700;color:var(--color-accent-2-700)}
+.plan ul{margin:6px 0 0;padding-left:18px;font-size:15px;display:flex;flex-direction:column;gap:6px}
+
+.need{columns:2 300px;column-gap:28px;margin:0;padding:0;list-style:none}
+.need li{break-inside:avoid;display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--color-surface)}
+.need li:before{content:"";width:12px;height:12px;border-radius:50%;background:var(--color-accent);flex:none;margin-top:7px}
+
+.faq details{background:var(--color-neutral-100);border-radius:var(--radius-md);padding:18px 22px;margin-bottom:10px}
+.faq summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--color-accent-700);font-size:22px;line-height:1}
+.faq details[open] summary:after{content:"−"}
+.faq p{margin:10px 0 0;color:var(--color-neutral-800)}
+
+.cta{background:var(--color-accent-2-900);color:var(--color-bg);padding:clamp(64px,10vw,120px) 0;position:relative;overflow:hidden}
+.cta:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--color-accent);right:-140px;top:-160px}
+.cta .wrap{position:relative;display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.cta h2{font-size:clamp(40px,6vw,76px);max-width:820px}
+.cta select{font:inherit;border:0;border-radius:999px;padding:14px 18px;background:var(--color-bg);color:var(--color-text);font-weight:600}
+.foot{padding:28px 0 100px;font-size:14px;color:var(--color-neutral-700)}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;background:var(--color-accent);color:var(--color-neutral-100);display:grid;place-items:center;box-shadow:var(--shadow-lg)}
+section.sec{padding:clamp(56px,8vw,96px) 0}
+section.sec h2.t{font-size:clamp(36px,5vw,58px);margin:10px 0 28px}
+[data-r]{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+[data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap row">
+    <a class="brand" href="../"><img src="../assets/pyahu-logo.png" alt="">Pyahu Labs</a>
+    <a class="btn" data-wa href="#">Consultar por WhatsApp</a>
+  </div>
+  <nav class="wrap chips" id="chips" aria-label="Servicios">
+    <a href="#resumen">Resumen</a>
+    <a href="#landing">Landing page</a>
+    <a href="#institucional">Sitio institucional</a>
+    <a href="#catalogo">Catálogo + WhatsApp</a>
+    <a href="#tienda">Tienda online</a>
+    <a href="#turnos">Turnos y reservas</a>
+    <a href="#gestion">Sistema de gestión</a>
+    <a href="#google">Google</a>
+    <a href="#como">Cómo trabajamos</a>
+    <a href="#mantenimiento">Mantenimiento</a>
+    <a href="#preguntas">Preguntas</a>
+  </nav>
+</header>
+
+<main>
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <span class="k">Servicios · Pyahu Labs · Villarrica</span>
+      <h1>Todo lo que necesitás saber antes de empezar.</h1>
+      <p>Qué incluye cada servicio, cuánto sale, cuánto tarda y cómo trabajamos. Si después de leer esto te queda una duda, escribime y te respondo el mismo día.</p>
+    </div>
+    <div class="promise" data-r>
+      <div><i>✓</i><span><b>Precio cerrado por escrito</b> antes de empezar. Sin sorpresas.</span></div>
+      <div><i>✓</i><span><b>Ves avances</b> y pedís cambios antes de publicar.</span></div>
+      <div><i>✓</i><span><b>El sitio es tuyo:</b> dominio a tu nombre y todos los accesos.</span></div>
+      <div><i>✓</i><span><b>Te enseño a usarlo</b> y quedo a mano por WhatsApp.</span></div>
+    </div>
+  </section>
+
+  <section class="quick" id="resumen" data-r>
+    <h2>Los siete servicios, de un vistazo</h2>
+    <table class="tbl">
+      <thead><tr><th>Servicio</th><th>Desde</th><th>Listo en</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Landing page</td><td class="price">Gs. 800.000</td><td>3 a 5 días</td><td><a href="#landing">Ver detalle →</a></td></tr>
+        <tr><td>Sitio institucional</td><td class="price">Gs. 1.500.000</td><td>1 a 2 semanas</td><td><a href="#institucional">Ver detalle →</a></td></tr>
+        <tr><td>Catálogo + pedidos por WhatsApp</td><td class="price">Gs. 2.500.000</td><td>1 a 2 semanas</td><td><a href="#catalogo">Ver detalle →</a></td></tr>
+        <tr><td>Tienda online con panel</td><td class="price">Gs. 5.000.000</td><td>3 a 5 semanas</td><td><a href="#tienda">Ver detalle →</a></td></tr>
+        <tr><td>Sistema de turnos o reservas</td><td class="price">Gs. 3.000.000</td><td>2 a 4 semanas</td><td><a href="#turnos">Ver detalle →</a></td></tr>
+        <tr><td>Sistema de gestión (caja, ventas, stock)</td><td class="price">Gs. 3.000.000</td><td>3 a 6 semanas</td><td><a href="#gestion">Ver detalle →</a></td></tr>
+        <tr><td>Presencia en Google</td><td class="price">Gs. 350.000</td><td>3 a 7 días</td><td><a href="#google">Ver detalle →</a></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:12px 0 0;font-size:15px;color:var(--color-neutral-700)">Los plazos cuentan desde que tengo tu material (fotos, textos, logo) y el adelanto. El precio final depende de lo que necesites y te lo paso por escrito.</p>
+  </section>
+</div>
+
+<div class="wrap" id="services"></div>
+
+<section class="band" id="como"><div class="wrap">
+  <span class="k">Cómo trabajamos</span>
+  <h2>Simple, claro y por WhatsApp.</h2>
+  <div class="steps">
+    <div class="step" data-r><b>Charlamos</b><p>Me contás qué necesita tu negocio. En persona, por llamada o videollamada. Sin costo.</p></div>
+    <div class="step" data-r><b>Propuesta</b><p>En 24 a 48 horas te paso por escrito qué incluye, cuánto sale y cuándo está listo.</p></div>
+    <div class="step" data-r><b>Arrancamos</b><p>Con el adelanto y tu material empiezo. Te muestro el primer avance a mitad de camino.</p></div>
+    <div class="step" data-r><b>Ajustes</b><p>Pedís cambios: hay dos rondas incluidas antes de publicar.</p></div>
+    <div class="step" data-r><b>Publicación</b><p>Lo pongo en línea con tu dominio, lo probamos juntos y te enseño a usarlo.</p></div>
+  </div>
+  <div class="pay">
+    <div data-r><b>50%</b>para empezar</div>
+    <div data-r><b>50%</b>al publicar, cuando ya lo viste funcionando</div>
+    <div data-r style="background:var(--color-bg);color:var(--color-text)"><b style="font-size:24px">Transferencia o efectivo</b>Lo que te quede más cómodo.</div>
+  </div>
+</div></section>
+
+<section class="sec" id="mantenimiento"><div class="wrap">
+  <span class="k">Mantenimiento</span>
+  <h2 class="t">Tu sitio siempre andando.</h2>
+  <p style="margin:-10px 0 26px;max-width:680px">El primer mes va incluido en todos los proyectos. Después elegís si seguir. En tiendas y sistemas es obligatorio, porque se usan todos los días y no pueden fallar.</p>
+  <div class="plans">
+    <div class="plan" data-r><span class="who">Landing · institucional · catálogo</span><h3 style="font-size:28px">Plan Web</h3><div class="p">Gs. 150.000 <small>/ mes</small></div><ul><li>Hosting y copias de seguridad</li><li>Que el sitio siga andando</li><li>Cambios chicos hasta 1 hora por mes: textos, fotos, precios</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Opcional</span></div>
+    <div class="plan hl" data-r><span class="who">Turnos · reservas · gestión</span><h3 style="font-size:28px">Plan Sistema</h3><div class="p">Gs. 250.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Web</li><li>Soporte prioritario por WhatsApp en horario comercial</li><li>Corrección de fallas</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Incluido obligatorio</span></div>
+    <div class="plan" data-r><span class="who">Tienda online</span><h3 style="font-size:28px">Plan Tienda</h3><div class="p">Gs. 350.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Sistema</li><li>Control de pagos, stock y pedidos</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Incluido obligatorio</span></div>
+  </div>
+  <p style="font-size:15px;color:var(--color-neutral-700);margin-top:16px">Funciones nuevas o cambios grandes se cotizan aparte, siempre con precio antes de hacerlos.</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <span class="k">Para empezar</span>
+  <h2>Lo que voy a necesitar de vos.</h2>
+  <ul class="need">
+    <li>Nombre del negocio, logo (una foto del cartel sirve) y colores si los tenés.</li>
+    <li>El número de WhatsApp donde querés recibir consultas o pedidos.</li>
+    <li>Dirección, horario y redes sociales.</li>
+    <li>Fotos del local, productos o equipo. Con el celular alcanza si hay buena luz.</li>
+    <li>Qué hacen y qué los diferencia, en 3 a 5 frases. Yo lo paso en limpio.</li>
+    <li>Lista de productos o servicios con precio (una planilla o fotos del menú).</li>
+    <li>El dominio que te gustaría (ej.: tunegocio.com.py) o el acceso si ya tenés uno.</li>
+    <li>Para tiendas y sistemas: quiénes lo van a usar y qué puede hacer cada uno.</li>
+  </ul>
+</div></section>
+
+<section class="sec faq" id="preguntas"><div class="wrap" style="max-width:880px">
+  <span class="k">Preguntas frecuentes</span>
+  <h2 class="t">Lo que más me preguntan.</h2>
+  <details><summary>¿Tengo que saber de tecnología?</summary><p>No. Me encargo de toda la parte técnica y te explico solo lo que necesitás para usarlo.</p></details>
+  <details><summary>¿El sitio es mío?</summary><p>Sí. El dominio queda a tu nombre y te entrego todos los accesos. No quedás atado a nadie.</p></details>
+  <details><summary>¿Cuánto sale el dominio?</summary><p>Un dominio .com.py cuesta Gs. 160.000 por año y se paga a NIC Paraguay. Un .com sale unos USD 10 al año. Lo gestiono yo, pero queda a tu nombre.</p></details>
+  <details><summary>¿Puedo cambiar precios o fotos después?</summary><p>Sí. Los cambios chicos entran en el mantenimiento, o te dejo todo listo para que los hagas vos.</p></details>
+  <details><summary>¿Qué pasa si no pago el mantenimiento?</summary><p>En landing, sitio institucional y catálogo el sitio sigue en línea: solo dejo de hacer cambios y soporte. En tiendas y sistemas es obligatorio porque se usan a diario.</p></details>
+  <details><summary>¿Trabajás con negocios fuera de Villarrica?</summary><p>Sí, con todo Paraguay. Coordinamos por WhatsApp y videollamada.</p></details>
+  <details><summary>¿El sistema de gestión emite facturas?</summary><p>No. Es para controlar caja, ventas y stock. La factura electrónica legal pasa por la SET; si la necesitás, lo evaluamos aparte.</p></details>
+  <details><summary>¿Puedo cobrar con tarjeta en la tienda?</summary><p>Sí, conectando una pasarela de pago como Bancard o Pagopar. Para eso tu negocio necesita RUC, y la pasarela cobra su comisión por venta. Mientras tanto, la tienda funciona con transferencia o pago al retirar.</p></details>
+  <details><summary>¿Y si no me gusta el diseño?</summary><p>Antes de publicar ves avances y tenés dos rondas de cambios incluidas. La idea es que salga como querés.</p></details>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>¿Lo charlamos?</h2>
+  <p style="margin:0;font-size:19px;max-width:560px;color:var(--color-accent-2-100)">Elegí el servicio que te interesa y se abre WhatsApp con el mensaje listo.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <select id="pick" aria-label="Servicio"></select>
+    <a class="btn" id="go" href="#" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+  </div>
+  <a href="../#proyectos" style="color:var(--color-accent-2-200)">Ver los proyectos funcionando →</a>
+</div></section>
+<div class="wrap foot">Pyahu Labs · Villarrica, Guairá · <a href="../">pyahulabs.com</a> · Precios en guaraníes, vigentes a septiembre de 2026.</div>
+</main>
+
+<a class="wa-float" data-wa href="#" aria-label="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
+
+<script>
+/* ============ CONFIGURACIÓN ============ */
+const WHATSAPP = '595993270253';
+/* ======================================= */
+const S = [
+  { id: 'landing', name: 'Landing page', price: 'Gs. 800.000', time: '3 a 5 días', maint: 'Plan Web, opcional',
+    for: 'Una sola página que presenta tu negocio y lleva directo a tu WhatsApp. Ideal para compartir en Instagram, en el estado de WhatsApp o en un QR en el local.',
+    yes: ['Diseño a medida con tu marca', 'Hasta 6 secciones (inicio, productos, nosotros, ubicación, contacto…)', 'Se ve perfecta en el celular', 'Botón de WhatsApp siempre visible', 'Mapa, horario y redes', 'Publicación y conexión de tu dominio', '2 rondas de cambios'],
+    no: ['Fotos profesionales (usamos las tuyas)', 'Varias páginas (eso es el sitio institucional)', 'El dominio (se paga aparte, queda a tu nombre)'],
+    demo: [['Sgt. Pepper\'s', '../sgt-peppers/'], ['Café Ka\'a', '../cafe-kaa/']] },
+  { id: 'institucional', name: 'Sitio institucional', price: 'Gs. 1.500.000', time: '1 a 2 semanas', maint: 'Plan Web, opcional',
+    for: 'Una web completa para mostrar quiénes son, qué hacen y cómo contactarlos. Para consultorios, estudios, colegios, empresas de servicios.',
+    yes: ['Hasta 5 páginas o secciones grandes', 'Servicios con detalle y precios si querés', 'Equipo, historia y ubicación con mapa', 'Formulario que llega a tu WhatsApp', 'Preparado para aparecer en Google (títulos y descripciones)', '2 rondas de cambios'],
+    no: ['Sistema de turnos (se suma aparte)', 'Blog con publicaciones semanales', 'Textos largos de cero (te ayudo a ordenar los tuyos)'],
+    demo: [['Odontología Benítez', '../odontologia-benitez/']] },
+  { id: 'catalogo', name: 'Catálogo + pedidos por WhatsApp', price: 'Gs. 2.500.000', time: '1 a 2 semanas', maint: 'Plan Web, opcional',
+    for: 'Tus productos online, con fotos y precios. El cliente arma su pedido y te llega por WhatsApp con todo listo: productos, cantidades y total.',
+    yes: ['Carga de hasta 50 productos', 'Categorías y filtros', 'Carrito que arma el mensaje solo', 'Opción de retiro o envío', 'Cambios de precios dentro del mantenimiento', '2 rondas de cambios'],
+    no: ['Pago con tarjeta online (eso es la tienda)', 'Panel para que cargues productos vos solo', 'Más de 50 productos (se cotiza)'],
+    demo: [['Poty', '../poty/']] },
+  { id: 'tienda', name: 'Tienda online con panel', price: 'Gs. 5.000.000', time: '3 a 5 semanas', maint: 'Plan Tienda, incluido',
+    for: 'Tu propia tienda: carrito, stock que se descuenta solo, pedidos con estado y un panel donde vos cargás productos, precios y ofertas sin depender de nadie.',
+    yes: ['Carga inicial de hasta 100 productos', 'Panel del dueño: productos, stock, pedidos, clientes', 'Stock que se actualiza con cada venta', 'Pago por transferencia o al retirar', 'Pago con tarjeta cuando tengas RUC (Bancard, Pagopar u otra)', 'Capacitación de 1 hora'],
+    no: ['Comisiones de la pasarela de pago (las cobra la pasarela)', 'Fotos de producto en estudio', 'Envíos fuera de tu zona (lo definís vos)'],
+    note: 'Para cobrar con tarjeta tu negocio necesita RUC y una cuenta en la pasarela. Mientras tanto, la tienda funciona igual con transferencia o pago al retirar.',
+    demo: [['Kuarahy Tech', '../kuarahy-tech/'], ['el panel del dueño', '../kuarahy-tech/panel.html']] },
+  { id: 'turnos', name: 'Sistema de turnos o reservas', price: 'Gs. 3.000.000', time: '2 a 4 semanas', maint: 'Plan Sistema, incluido',
+    for: 'Tus clientes reservan mesa o sacan turno desde el celular, a cualquier hora. Vos ves la agenda del día en un solo lugar, sin llamadas perdidas ni mensajes de ida y vuelta.',
+    yes: ['Página de reservas o turnos con horarios libres en tiempo real', 'Agenda por profesional, mesa o sala', 'Bloqueo de horarios y feriados', 'Confirmación por WhatsApp', 'Panel con usuario y contraseña', 'Capacitación para vos y tu equipo'],
+    no: ['Recordatorios por SMS (tienen costo por mensaje)', 'Cobro de seña online (se cotiza aparte)'],
+    demo: [['Verá Studio (turnos)', '../vera-studio/'], ['Mesa Guairá (reservas)', '../mesa-guaira/']] },
+  { id: 'gestion', name: 'Sistema de gestión: caja, ventas y stock', price: 'Gs. 3.000.000', time: '3 a 6 semanas', maint: 'Plan Sistema, incluido',
+    for: 'Dejá el cuaderno y la planilla. Registrás cada venta, cerrás la caja del día en un minuto y sabés qué se está por terminar antes de que pase.',
+    yes: ['Carga de productos y precios', 'Registro de ventas rápido, desde la compu o el celular', 'Cierre de caja diario', 'Alertas de stock bajo', 'Reportes por día y por mes', 'Usuarios con permisos (dueño, cajero)'],
+    no: ['Factura electrónica legal (pasa por la SET; se evalúa aparte)', 'Contabilidad o liquidación de impuestos'],
+    note: 'Es un sistema de control interno. No reemplaza la facturación legal ante la SET.',
+    demo: [] },
+  { id: 'google', name: 'Presencia en Google', price: 'Gs. 350.000', time: '3 a 7 días', maint: 'No necesita',
+    for: 'Que te encuentren cuando buscan “café en Villarrica” o “dentista cerca”. Aparecés en Google Maps con fotos, horario, reseñas y botones para llamar o llegar.',
+    yes: ['Crear o recuperar tu perfil de Google', 'Verificación a nombre de tu negocio', 'Categorías, horario y zona correctos', 'Servicios o productos con precio', '10 a 20 fotos bien elegidas', 'Link y QR para pedir reseñas'],
+    no: ['Publicidad paga en Google', 'La verificación en sí la hace Google y puede tardar unos días'],
+    demo: [['el caso Café Ka\'a en Google', '../cafe-kaa/google.html']] }
+];
+const wa = t => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t)}`;
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+document.getElementById('services').innerHTML = S.map((s, i) => `
+<section class="svc" id="${s.id}">
+  <div data-r>
+    <div class="num">${i + 1}</div>
+    <h2>${esc(s.name)}</h2>
+    <p class="for">${esc(s.for)}</p>
+    <div class="facts"><div class="fact"><span>Desde</span><b>${s.price}</b></div><div class="fact"><span>Listo en</span><b>${s.time}</b></div><div class="fact"><span>Mantenimiento</span><b style="font-size:17px">${s.maint}</b></div></div>
+    <div class="acts"><a class="btn" target="_blank" rel="noopener" href="${wa('Hola Nicolás, me interesa: ' + s.name + '. ¿Me contás más?')}">Consultar este servicio</a>${s.demo[0] ? `<a class="btn ghost" target="_blank" rel="noopener" href="${s.demo[0][1]}">Ver ejemplo</a>` : ''}</div>
+  </div>
+  <div class="cols" data-r>
+    <div class="box yes"><h3>Incluye</h3><ul>${s.yes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
+    <div class="box no"><h3>No incluye</h3><ul>${s.no.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
+    ${s.note ? `<div class="note"><b>Importante:</b> ${esc(s.note)}</div>` : ''}
+    ${s.demo.length ? `<div class="demo"><span>Probalo funcionando: ${s.demo.map(d => `<a target="_blank" rel="noopener" href="${d[1]}">${esc(d[0])}</a>`).join(' · ')}</span><span style="font-size:14px;opacity:.8">Negocio de muestra</span></div>` : `<div class="demo"><span>¿Querés verlo? Te muestro un sistema funcionando en una videollamada de 15 minutos.</span></div>`}
+  </div>
+</section>`).join('');
+
+// WhatsApp
+document.querySelectorAll('[data-wa]').forEach(a => { a.href = wa('Hola Nicolás, vi tus servicios y quiero consultar.'); a.target = '_blank'; a.rel = 'noopener'; });
+const pick = document.getElementById('pick'), go = document.getElementById('go');
+pick.innerHTML = ['No sé cuál me sirve', ...S.map(s => s.name)].map(n => `<option>${esc(n)}</option>`).join('');
+const upd = () => { go.href = wa(pick.value === 'No sé cuál me sirve' ? 'Hola Nicolás, tengo un negocio y no sé qué servicio me conviene. ¿Lo charlamos?' : 'Hola Nicolás, me interesa: ' + pick.value + '. ¿Me contás más?'); };
+pick.addEventListener('change', upd); upd();
+const hash = location.hash.slice(1); if (S.some(s => s.id === hash)) { pick.value = S.find(s => s.id === hash).name; upd(); }
+if (hash && document.getElementById(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView());
+
+// reveal
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
+document.querySelectorAll('[data-r]').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+// chip activo + sombra del menú
+const chips = [...document.querySelectorAll('#chips a')];
+const secs = chips.map(c => document.querySelector(c.getAttribute('href'))).filter(Boolean);
+const bar = document.getElementById('top');
+const onScroll = () => {
+  bar.classList.toggle('scrolled', scrollY > 8);
+  let cur = secs[0];
+  secs.forEach(s => { if (s.getBoundingClientRect().top < 200) cur = s; });
+  chips.forEach(c => { const on = c.getAttribute('href') === '#' + cur.id; if (on !== c.classList.contains('on')) { c.classList.toggle('on', on); if (on) c.scrollIntoView({ block: 'nearest', inline: 'center' }); } });
+};
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+</script>
+</body>
+</html>
