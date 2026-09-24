@@ -121,13 +121,9 @@
 <div style="position:absolute;inset:32%;border-radius:50%;background:#d9412b;font-family:'Anton',sans-serif;font-size:12px;letter-spacing:.08em;line-height:1;color:#f1ebe0"><span style="position:absolute;left:0;right:0;top:24%;text-align:center;white-space:nowrap">SGT. PEPPER'S</span><span style="position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#0e0e0e"></span><span style="position:absolute;left:0;right:0;bottom:24%;text-align:center;white-space:nowrap">PLAYLIST</span></div>
 </div>
 <div style="display:flex;flex-direction:column;gap:22px">
-<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Anton',sans-serif;font-size:16px;letter-spacing:.1em;color:#d9412b">PLAYLIST OFICIAL</span><span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,48px);line-height:1">LONELY HEARTS CLUB MIX</span></div>
-<div style="display:flex;flex-direction:column">
-<sc-for list="{{ playlist }}" as="s" hint-placeholder-count="8">
-<div data-rv="left" style="display:flex;align-items:baseline;gap:16px;padding:10px 0;border-bottom:1px dashed #3a3632;font-size:16px"><span style="font-family:'Anton',sans-serif;color:#8f887c;width:26px;flex:none">{{ s.n }}</span><span style="font-weight:700;flex:1">{{ s.t }}</span><span style="color:#c4bdb1">{{ s.a }}</span></div>
-</sc-for>
-</div>
-<a href="{{ playlistLink }}" style="align-self:flex-start;border:2px solid #f1ebe0;color:#f1ebe0;text-decoration:none;font-family:'Anton',sans-serif;font-size:20px;letter-spacing:.06em;padding:12px 24px;transition:background .2s" style-hover="background:#f1ebe0;color:#0e0e0e">ESCUCHALA EN SPOTIFY</a>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Anton',sans-serif;font-size:16px;letter-spacing:.1em;color:#d9412b">PLAYLIST OFICIAL</span><span style="font-family:'Anton',sans-serif;font-size:clamp(34px,4vw,48px);line-height:1">LA PLAYLIST DEL BAR</span></div>
+<iframe title="Playlist de Sgt. Pepper's en Spotify" style="border:0;border-radius:12px;width:100%;height:380px;background:#161616" src="https://open.spotify.com/embed/playlist/3SKjb8yEdzz5tDKt170vtM?utm_source=generator&amp;theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<a href="{{ playlistLink }}" target="_blank" rel="noopener" style="align-self:flex-start;border:2px solid #f1ebe0;color:#f1ebe0;text-decoration:none;font-family:'Anton',sans-serif;font-size:20px;letter-spacing:.06em;padding:12px 24px;transition:background .2s" style-hover="background:#f1ebe0;color:#0e0e0e">ESCUCHALA EN SPOTIFY</a>
 </div>
 </div>
 </div>
@@ -160,7 +156,7 @@
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;595000000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;playlist&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://open.spotify.com/&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;595000000000&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;playlist&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://open.spotify.com/playlist/3SKjb8yEdzz5tDKt170vtM&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 const U = (id, w = 900) => 'https://images.unsplash.com/' + id + '?fm=jpg&q=70&w=' + w + '&auto=format&fit=crop';
 const SGT = {
   tragos: [
@@ -269,7 +265,7 @@ class Component extends DCLogic {
       carta: SGT.carta.map((c, i) => ({ ...c, tituloUp: c.titulo.toUpperCase(), side: 'SIDE ' + 'ABCD'[i] })),
       noches: SGT.noches.map(n => ({ ...n, bg: n.hot ? '#d9412b' : 'transparent', fg: '#f1ebe0', accent: n.hot ? '#0e0e0e' : '#d9412b' })),
       playlist: SGT.playlist.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, '0') })),
-      playlistLink: this.props.playlist ?? 'https://open.spotify.com/',
+      playlistLink: this.props.playlist ?? 'https://open.spotify.com/playlist/3SKjb8yEdzz5tDKt170vtM',
       horarios: SGT.horarios,
     };
   }
