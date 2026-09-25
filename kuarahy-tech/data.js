@@ -23,7 +23,7 @@ const KT = (() => {
   const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
   const gs = n => 'Gs. ' + Math.round(n).toLocaleString('es-PY').replace(/,/g, '.');
   return {
-    WHATSAPP: '595993270253', // número de la tienda (en la demo, el de Pyahu Labs)
+    WHATSAPP: '595993485179', // número de la tienda (en la demo, el de Pyahu Labs)
     SHIPPING: 15000,
     gs,
     products: () => get('kt_products', SEED_PRODUCTS),

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900">
+<defs>
+<pattern id="d" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r="2.6" fill="#f1ebe0" opacity=".16"/></pattern>
+</defs>
+<rect width="900" height="900" fill="#d9412b"/>
+<path d="M450.0,450.0 L1350.0,450.0 L1319.3,682.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L1229.4,900.0 L1086.4,1086.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L900.0,1229.4 L682.9,1319.3Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L450.0,1350.0 L217.1,1319.3Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L0.0,1229.4 L-186.4,1086.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L-329.4,900.0 L-419.3,682.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L-450.0,450.0 L-419.3,217.1Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L-329.4,0.0 L-186.4,-186.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L-0.0,-329.4 L217.1,-419.3Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L450.0,-450.0 L682.9,-419.3Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L900.0,-329.4 L1086.4,-186.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,450.0 L1229.4,-0.0 L1319.3,217.1Z" fill="#f1ebe0" opacity=".07"/>
+<rect width="900" height="900" fill="url(#d)"/>
+<g transform="translate(81.0,81.0) scale(1.845)" stroke="#0e0e0e" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"><path d="M140 60 Q110 150 160 220 Q120 280 170 330 L230 330 Q280 280 240 220 Q290 150 260 60Z" fill="#e8b923"/>
+<path d="M140 60 L260 60" fill="none"/>
+<path d="M150 90 Q140 150 172 205" fill="none" stroke="#f1ebe0" stroke-width="6" opacity=".8"/>
+<path d="M200 330 L200 350" fill="none"/><path d="M140 362 Q200 340 260 362Z" fill="#f1ebe0"/>
+<path d="M230 60 L290 10 L330 40 L262 72Z" fill="#e8b923"/><path d="M262 72 L330 40" fill="none"/><path d="M280 42 l6 6 M300 30 l6 6 M305 50 l6 6" fill="none" stroke-width="5"/>
+<path d="M300 10 L320 -20 M300 10 L335 -5 M300 10 L290 -22" fill="none" stroke="#5f8a3a" stroke-width="9"/>
+<path d="M110 30 L170 20 Q150 -30 110 30Z" fill="#d9412b"/><path d="M140 25 L175 110" fill="none"/>
+<g transform="translate(200,265)"><path d="M-40 0 Q-40 -18 -20 -18 L22 -18 Q42 -18 42 0 Q42 16 22 16 L-20 16 Q-40 16 -40 0Z" fill="#f1ebe0" stroke-width="5"/><rect x="-6" y="-32" width="16" height="14" fill="#f1ebe0" stroke-width="5"/><circle cx="-14" cy="0" r="5" fill="#0e0e0e" stroke="none"/><circle cx="4" cy="0" r="5" fill="#0e0e0e" stroke="none"/><circle cx="22" cy="0" r="5" fill="#0e0e0e" stroke="none"/></g></g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" width="900" height="675">
+<defs>
+<pattern id="d" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r="2.6" fill="#f1ebe0" opacity=".16"/></pattern>
+</defs>
+<rect width="900" height="675" fill="#0e0e0e"/>
+<path d="M450.0,337.5 L1350.0,337.5 L1319.3,570.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L1229.4,787.5 L1086.4,973.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L900.0,1116.9 L682.9,1206.8Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L450.0,1237.5 L217.1,1206.8Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L0.0,1116.9 L-186.4,973.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L-329.4,787.5 L-419.3,570.4Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L-450.0,337.5 L-419.3,104.6Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L-329.4,-112.5 L-186.4,-298.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L-0.0,-441.9 L217.1,-531.8Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L450.0,-562.5 L682.9,-531.8Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L900.0,-441.9 L1086.4,-298.9Z" fill="#f1ebe0" opacity=".07"/>
+<path d="M450.0,337.5 L1229.4,-112.5 L1319.3,104.6Z" fill="#f1ebe0" opacity=".07"/>
+<rect width="900" height="675" fill="url(#d)"/>
+<g transform="translate(173.3,60.8) scale(1.384)" stroke="#f1ebe0" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"><path d="M60 0 L0 400 L140 400Z" fill="#e8b923" opacity=".35" stroke="none"/><path d="M340 0 L260 400 L400 400Z" fill="#e8b923" opacity=".35" stroke="none"/>
+<path d="M300 90 L300 380 M260 380 L340 380" fill="none" stroke-width="9"/>
+<rect x="282" y="40" width="36" height="60" rx="18" fill="#f1ebe0"/><path d="M288 60 L312 60 M288 75 L312 75" fill="none" stroke-width="4"/>
+<g transform="rotate(-35 170 230)">
+<path d="M120 200 Q80 170 110 140 Q140 120 160 150 Q185 130 205 150 Q225 185 190 205 Q230 250 190 290 Q150 320 110 290 Q70 250 120 200Z" fill="#d9412b"/>
+<rect x="155" y="-30" width="22" height="200" fill="#7a4a2a"/>
+<rect x="148" y="-70" width="36" height="46" rx="6" fill="#1c1c1c"/>
+<rect x="138" y="215" width="56" height="12" fill="#f1ebe0"/><rect x="138" y="240" width="56" height="12" fill="#f1ebe0"/>
+<circle cx="120" cy="270" r="8" fill="#f1ebe0"/><circle cx="145" cy="285" r="8" fill="#f1ebe0"/>
+</g></g>
+</svg>
