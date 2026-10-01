@@ -7,7 +7,7 @@
 <meta name="description" content="Qué incluye cada servicio de Pyahu Labs, cuánto sale, cuánto tarda y cómo trabajamos. Landing pages, sitios, catálogos, tiendas online, turnos, sistemas de gestión y Google.">
 <meta property="og:title" content="Servicios y precios — Pyahu Labs">
 <meta property="og:description" content="Todo lo que necesitás saber antes de empezar: qué incluye, precio, plazo y cómo trabajamos.">
-<meta property="og:image" content="../assets/og.jpg">
+<meta property="og:image" content="https://pyahulabs.com/assets/og.jpg">
 <meta name="theme-color" content="#f5ead8">
 <link rel="icon" href="../assets/brote.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
@@ -127,10 +127,11 @@ a{color:var(--color-accent-700)}
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;background:var(--color-accent);color:var(--color-neutral-100);display:grid;place-items:center;box-shadow:var(--shadow-lg)}
 section.sec{padding:clamp(56px,8vw,96px) 0}
 section.sec h2.t{font-size:clamp(36px,5vw,58px);margin:10px 0 28px}
-[data-r]{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-[data-r].in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){[data-r]{opacity:1;transform:none;transition:none}}
+.js [data-r]{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js [data-r].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js [data-r]{opacity:1;transform:none;transition:none}}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -213,8 +214,8 @@ section.sec h2.t{font-size:clamp(36px,5vw,58px);margin:10px 0 28px}
   <p style="margin:-10px 0 26px;max-width:680px">El primer mes va incluido en todos los proyectos. Después elegís si seguir. Precios con IVA incluido. En tiendas y sistemas es obligatorio, porque se usan todos los días y no pueden fallar.</p>
   <div class="plans">
     <div class="plan" data-r><span class="who">Landing · institucional · catálogo</span><h3 style="font-size:28px">Plan Web</h3><div class="p">Gs. 150.000 <small>/ mes</small></div><ul><li>Hosting y copias de seguridad</li><li>Que el sitio siga andando</li><li>Cambios chicos hasta 1 hora por mes: textos, fotos, precios</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Opcional</span></div>
-    <div class="plan hl" data-r><span class="who">Turnos · reservas · gestión</span><h3 style="font-size:28px">Plan Sistema</h3><div class="p">Gs. 250.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Web</li><li>Soporte prioritario por WhatsApp en horario comercial</li><li>Corrección de fallas</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Incluido obligatorio</span></div>
-    <div class="plan" data-r><span class="who">Tienda online</span><h3 style="font-size:28px">Plan Tienda</h3><div class="p">Gs. 350.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Sistema</li><li>Control de pagos, stock y pedidos</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Incluido obligatorio</span></div>
+    <div class="plan hl" data-r><span class="who">Turnos · reservas · gestión</span><h3 style="font-size:28px">Plan Sistema</h3><div class="p">Gs. 250.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Web</li><li>Soporte prioritario por WhatsApp en horario comercial</li><li>Corrección de fallas</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Obligatorio</span></div>
+    <div class="plan" data-r><span class="who">Tienda online</span><h3 style="font-size:28px">Plan Tienda</h3><div class="p">Gs. 350.000 <small>/ mes</small></div><ul><li>Todo lo del Plan Sistema</li><li>Control de pagos, stock y pedidos</li></ul><span style="font-size:14px;color:var(--color-neutral-700)">Obligatorio</span></div>
   </div>
   <p style="font-size:15px;color:var(--color-neutral-700);margin-top:16px">Funciones nuevas o cambios grandes se cotizan aparte, siempre con precio antes de hacerlos.</p>
 </div></section>
@@ -257,7 +258,7 @@ section.sec h2.t{font-size:clamp(36px,5vw,58px);margin:10px 0 28px}
   </div>
   <a href="../#proyectos" style="color:var(--color-accent-2-200)">Ver los proyectos funcionando →</a>
 </div></section>
-<div class="wrap foot">Pyahu Labs · Villarrica, Guairá · <a href="../">pyahulabs.com</a> · Precios en guaraníes, IVA incluido, vigentes a septiembre de 2026.</div>
+<div class="wrap foot">Pyahu Labs · Villarrica, Guairá · <a href="../">pyahulabs.com</a> · Precios en guaraníes, IVA incluido, vigentes a octubre de 2026.</div>
 </main>
 
 <a class="wa-float" data-wa href="#" aria-label="WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
@@ -320,7 +321,7 @@ document.getElementById('services').innerHTML = S.map((s, i) => `
     <div class="box yes"><h3>Incluye</h3><ul>${s.yes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
     <div class="box no"><h3>No incluye</h3><ul>${s.no.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>
     ${s.note ? `<div class="note"><b>Importante:</b> ${esc(s.note)}</div>` : ''}
-    ${s.demo.length ? `<div class="demo"><span>Probalo funcionando: ${s.demo.map(d => `<a target="_blank" rel="noopener" href="${d[1]}">${esc(d[0])}</a>`).join(' · ')}</span><span style="font-size:14px;opacity:.8">Ejemplos</span></div>` : `<div class="demo"><span>¿Querés verlo? Te muestro un sistema funcionando en una videollamada de 15 minutos.</span></div>`}
+    ${s.demo.length ? `<div class="demo"><span>Probalo funcionando: ${s.demo.map(d => `<a target="_blank" rel="noopener" href="${d[1]}">${esc(d[0])}</a>`).join(' · ')}</span></div>` : `<div class="demo"><span>¿Querés verlo? Te muestro un sistema funcionando en una videollamada de 15 minutos.</span></div>`}
   </div>
 </section>`).join('');
 
@@ -334,8 +335,12 @@ const hash = location.hash.slice(1); if (S.some(s => s.id === hash)) { pick.valu
 if (hash && document.getElementById(hash)) requestAnimationFrame(() => document.getElementById(hash).scrollIntoView());
 
 // reveal
-const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 }) : null;
-document.querySelectorAll('[data-r]').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+const rv = [...document.querySelectorAll('[data-r]')];
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0, rootMargin: '0px 0px -6% 0px' }) : null;
+rv.forEach(el => io ? io.observe(el) : el.classList.add('in'));
+// red de seguridad: si un scroll rápido o un salto deja algo sin mostrar, se muestra igual
+const sweep = () => rv.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); });
+addEventListener('scroll', sweep, { passive: true }); addEventListener('hashchange', () => setTimeout(sweep, 400)); setTimeout(sweep, 300);
 
 // chip activo + sombra del menú
 const chips = [...document.querySelectorAll('#chips a')];
@@ -345,7 +350,7 @@ const onScroll = () => {
   bar.classList.toggle('scrolled', scrollY > 8);
   let cur = secs[0];
   secs.forEach(s => { if (s.getBoundingClientRect().top < 200) cur = s; });
-  chips.forEach(c => { const on = c.getAttribute('href') === '#' + cur.id; if (on !== c.classList.contains('on')) { c.classList.toggle('on', on); if (on) c.scrollIntoView({ block: 'nearest', inline: 'center' }); } });
+  chips.forEach(c => { const on = c.getAttribute('href') === '#' + cur.id; if (on !== c.classList.contains('on')) { c.classList.toggle('on', on); if (on) { const box = c.parentElement; box.scrollTo({ left: c.offsetLeft - (box.clientWidth - c.offsetWidth) / 2, behavior: 'smooth' }); } } });
 };
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 </script>
